@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Workshop | Futuready Media — Transform Your Business with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════════════════════
+   FUTUREADY MEDIA — SHARED DESIGN SYSTEM
+   ════════════════════════════════════════════════ */
+:root {
+  --blue:         #0A66C2;
+  --blue-light:   #1a7dd4;
+  --blue-dark:    #084f96;
+  --blue-glow:    rgba(10,102,194,0.18);
+  --blue-glow-s:  rgba(10,102,194,0.35);
+  --blue-pale:    rgba(10,102,194,0.07);
+  --white:        #ffffff;
+  --off-white:    #f7f9fc;
+  --text:         #0d1117;
+  --text-mid:     #3a4a5c;
+  --text-muted:   #5a6475;
+  --border:       rgba(10,102,194,0.12);
+  --shadow:       0 4px 32px rgba(10,102,194,0.08);
+  --shadow-hover: 0 12px 48px rgba(10,102,194,0.18);
+  --radius:       14px;
+  --font-head:    'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --nav-h:        70px;
+  --transition:   0.28s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--text);background:var(--white);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(10,102,194,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(10,102,194,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+section,header,footer,nav.mobile-menu{position:relative;z-index:1}
+
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+.section-tag{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;display:inline-flex;align-items:center;gap:8px}
+.section-tag::before{content:'';width:24px;height:2px;background:var(--blue);border-radius:2px;flex-shrink:0}
+.section-headline{font-family:var(--font-head);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.025em;line-height:1.12;margin-bottom:18px}
+.section-sub{font-size:1.05rem;color:var(--text-muted);max-width:560px;line-height:1.75}
+
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:var(--white);padding:14px 30px;border-radius:100px;font-family:var(--font-body);font-weight:600;font-size:.95rem;transition:background var(--transition),box-shadow var(--transition),transform .15s;box-shadow:0 4px 20px var(--blue-glow-s)}
+.btn-primary:hover{background:var(--blue-light);transform:translateY(-2px);box-shadow:0 8px 36px var(--blue-glow-s)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:13px 28px;border-radius:100px;border:1.5px solid rgba(0,0,0,.14);font-family:var(--font-body);font-weight:600;font-size:.95rem;transition:border-color var(--transition),color var(--transition)}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);padding:15px 34px;border-radius:100px;font-family:var(--font-body);font-weight:600;font-size:.95rem;box-shadow:0 4px 24px rgba(0,0,0,.25);transition:transform .15s,box-shadow var(--transition)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.btn-ghost-white{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:14px 32px;border-radius:100px;border:1.5px solid rgba(255,255,255,.3);font-family:var(--font-body);font-weight:600;font-size:.95rem;transition:border-color var(--transition),background var(--transition)}
+.btn-ghost-white:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.07)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+
+/* ── HEADER ── */
+.site-header{position:sticky;top:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:box-shadow var(--transition)}
+.site-header.scrolled{box-shadow:0 4px 24px rgba(10,102,194,.09)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.site-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:800;font-size:1.15rem;color:var(--text);letter-spacing:-.02em;text-decoration:none}
+.site-logo img{height:40px;width:auto;object-fit:contain}
+.site-logo .logo-text span{color:var(--blue)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-muted);transition:color var(--transition)}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-links .nav-cta{background:var(--blue);color:var(--white)!important;padding:9px 22px;border-radius:100px;font-size:.85rem!important;font-weight:600!important;transition:background var(--transition),box-shadow var(--transition)!important}
+.nav-links .nav-cta:hover{background:var(--blue-light)!important;box-shadow:0 0 24px var(--blue-glow-s)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:24px;z-index:999;flex-direction:column;gap:4px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:12px 4px;font-size:1rem;font-weight:500;color:var(--text-mid);border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#eef5ff 0%,#ffffff 55%,#e8f0fb 100%);overflow:hidden}
+.hero::after{content:'';position:absolute;top:-140px;right:-60px;width:700px;height:700px;background:radial-gradient(circle,rgba(10,102,194,.09) 0%,transparent 68%);border-radius:50%;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:52% 48%;gap:60px;align-items:center;width:100%;padding:130px 24px 110px;max-width:1160px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(10,102,194,.08);border:1px solid rgba(10,102,194,.2);border-radius:100px;padding:6px 16px;font-size:.78rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:28px}
+.hero-badge::before{content:'';width:7px;height:7px;background:var(--blue);border-radius:50%;box-shadow:0 0 8px var(--blue);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-headline{font-family:var(--font-head);font-size:clamp(2.8rem,4.2vw,4.2rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--text);margin-bottom:28px}
+.hero-headline .accent{color:var(--blue);position:relative}
+.hero-headline .accent::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),transparent);border-radius:2px}
+.hero-sub{font-size:1.08rem;color:var(--text-muted);max-width:460px;margin-bottom:44px;line-height:1.75}
+.cta-group{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-card-stack{position:relative;width:100%;max-width:480px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.glow-orb{position:absolute;border-radius:50%;filter:blur(56px);opacity:.55;pointer-events:none}
+.glow-orb-1{width:340px;height:340px;background:radial-gradient(circle,rgba(10,102,194,.20),transparent 70%);top:-80px;left:-60px;z-index:0}
+.glow-orb-2{width:220px;height:220px;background:radial-gradient(circle,rgba(10,102,194,.13),transparent 70%);bottom:-40px;right:-20px;z-index:0}
+.stat-card{background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;box-shadow:0 4px 24px rgba(10,102,194,.07),0 1px 3px rgba(0,0,0,.04);backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:flex-start;gap:12px;position:relative;z-index:1;animation:floatIn .55s cubic-bezier(.22,1,.36,1) both}
+.stat-card:nth-child(1){animation-delay:.05s}.stat-card:nth-child(2){animation-delay:.15s}.stat-card:nth-child(3){animation-delay:.25s}.stat-card:nth-child(4){animation-delay:.35s}
+@keyframes floatIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.stat-icon{width:40px;height:40px;background:linear-gradient(135deg,rgba(10,102,194,.1),rgba(10,102,194,.04));border:1px solid rgba(10,102,194,.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.stat-val{font-family:var(--font-head);font-weight:800;font-size:1.55rem;color:var(--blue);line-height:1;letter-spacing:-.03em;margin-bottom:4px}
+.stat-label{font-size:.75rem;color:var(--text-muted);line-height:1.4}
+
+/* ── SERVICES ── */
+.services{padding:100px 0;background:var(--off-white)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;box-shadow:var(--shadow);transition:box-shadow .25s,transform .2s,border-color .2s;position:relative;overflow:hidden}
+.service-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),rgba(10,102,194,.2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.service-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:rgba(10,102,194,.2)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{font-size:2rem;margin-bottom:18px;display:block}
+.service-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+.service-card p{font-size:.875rem;color:var(--text-muted);line-height:1.65;margin-bottom:20px}
+.service-link{font-size:.82rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+.service-link:hover{gap:8px}
+
+/* ── WHY ── */
+.why{padding:100px 0;background:var(--white)}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-visual{background:linear-gradient(135deg,#f0f6ff,#e8f0fb);border:1px solid var(--border);border-radius:20px;padding:40px;position:relative;overflow:hidden}
+.why-list-items{display:flex;flex-direction:column;gap:28px;margin-bottom:0}
+.why-item{display:flex;gap:16px;align-items:flex-start}
+.why-item-icon{font-size:1.5rem;flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--blue-pale);border-radius:10px;border:1px solid var(--border)}
+.why-item h4{font-family:var(--font-head);font-size:.975rem;font-weight:700;margin-bottom:6px}
+.why-item p{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+.why-points{display:flex;flex-direction:column;gap:0}
+.why-point{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border)}
+.why-point:last-child{border-bottom:none}
+.why-num{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--blue);opacity:.35;flex-shrink:0;width:32px}
+.why-point strong{display:block;font-size:.9rem;font-weight:700;margin-bottom:4px;font-family:var(--font-head)}
+.why-point span{font-size:.82rem;color:var(--text-muted)}
+
+/* ── CASES ── */
+.cases{padding:100px 0;background:var(--off-white)}
+.cases-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.case-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .25s,transform .2s}
+.case-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
+.case-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,var(--blue-pale),rgba(10,102,194,.04))}
+.case-body{padding:28px}
+.case-tag{font-size:.72rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.case-body h3{font-family:var(--font-head);font-size:1rem;font-weight:700;line-height:1.4;margin-bottom:12px}
+.case-body p{font-size:.85rem;color:var(--text-muted);line-height:1.65;margin-bottom:20px}
+.case-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--border);padding-top:16px}
+.case-stat-val{font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:var(--blue)}
+.case-stat-label{font-size:.7rem;color:var(--text-muted)}
+
+/* ── TRUST ── */
+.trust{padding:100px 0;background:var(--white)}
+.trust-header{text-align:center;margin-bottom:56px}
+.trust-header .section-tag{justify-content:center}
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:56px;background:linear-gradient(135deg,#eef5ff,#e8f0fb);border-radius:20px;padding:40px;border:1px solid var(--border)}
+.strip-item{text-align:center}
+.strip-val{font-family:var(--font-head);font-size:2.2rem;font-weight:800;color:var(--blue);letter-spacing:-.03em;margin-bottom:6px}
+.strip-label{font-size:.82rem;color:var(--text-muted)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative}
+.testimonial-card::before{content:'"';font-family:var(--font-head);font-size:5rem;color:rgba(10,102,194,.08);position:absolute;top:-12px;left:20px;line-height:1;font-weight:800}
+.testimonial-card p{font-size:.9rem;color:var(--text);line-height:1.7;margin-bottom:20px;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue-glow),rgba(10,102,194,.12));border:2px solid rgba(10,102,194,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.author-name{font-size:.875rem;font-weight:600}
+.author-role{font-size:.78rem;color:var(--text-muted)}
+.stars{color:#f59e0b;font-size:.8rem;margin-bottom:8px}
+
+/* ── FINAL CTA ── */
+.final-cta{padding:100px 0;background:linear-gradient(135deg,#0a1628 0%,#0d1f3c 50%,var(--blue) 160%);position:relative;overflow:hidden;text-align:center;color:#fff}
+.final-cta::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(10,102,194,.25) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.final-cta-inner{position:relative;z-index:1}
+.final-cta .section-tag{color:rgba(255,255,255,.55);justify-content:center}
+.final-cta .section-tag::before{background:rgba(255,255,255,.35)}
+.final-cta .section-headline{color:#fff;margin-bottom:16px}
+.final-cta .section-sub{color:rgba(255,255,255,.6);margin:0 auto 48px;text-align:center}
+.final-cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.guarantee-note{margin-top:28px;font-size:.8rem;color:rgba(255,255,255,.4)}
+
+/* ── FOOTER ── */
+.site-footer{background:#06090f;color:rgba(255,255,255,.45);padding:60px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:#fff}
+.footer-brand .footer-logo img{height:36px;width:auto;object-fit:contain}
+.footer-brand .footer-logo .logo-text span{color:var(--blue)}
+.footer-brand p{font-size:.875rem;line-height:1.7;max-width:260px}
+.footer-col h4{font-family:var(--font-head);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-bottom:16px}
+.footer-col a{display:block;font-size:.875rem;color:rgba(255,255,255,.4);margin-bottom:10px;transition:color var(--transition)}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.8rem}
+.footer-bottom a{color:rgba(255,255,255,.35);transition:color var(--transition)}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+.footer-legal{display:flex;gap:20px}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 8px 36px rgba(37,211,102,.5)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;padding:80px 24px}
+  .hero-visual{display:none}
+  .why-inner,.services-grid,.cases-grid,.testimonials-grid{grid-template-columns:1fr}
+  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .services-header,.cases-header{flex-direction:column;align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+
+
+/* ── WORKSHOP EXTRAS ── */
+.workshop-hero{min-height:80vh;display:flex;align-items:center;background:linear-gradient(135deg,#eef5ff 0%,#fff 55%,#e8f0fb 100%);overflow:hidden;padding:130px 0 100px}
+.workshop-hero::after{content:'';position:absolute;top:-140px;right:-60px;width:700px;height:700px;background:radial-gradient(circle,rgba(10,102,194,.09) 0%,transparent 68%);border-radius:50%;pointer-events:none}
+.workshop-hero-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:55% 45%;gap:60px;align-items:center}
+.workshop-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(10,102,194,.08);border:1px solid rgba(10,102,194,.2);border-radius:100px;padding:6px 16px;font-size:.78rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:28px}
+.workshop-badge::before{content:'';width:7px;height:7px;background:var(--blue);border-radius:50%;box-shadow:0 0 8px var(--blue);animation:pulse 2s infinite}
+.workshop-hero h1{font-family:var(--font-head);font-size:clamp(2.4rem,4vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:24px}
+.workshop-hero h1 .accent{color:var(--blue)}
+.workshop-hero p{font-size:1.05rem;color:var(--text-muted);max-width:480px;margin-bottom:40px;line-height:1.75}
+.workshop-visual-card{background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:0 8px 48px rgba(10,102,194,.12)}
+.wv-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.wv-icon{font-size:1.8rem}
+.wv-title{font-family:var(--font-head);font-size:1rem;font-weight:700}
+.wv-sub{font-size:.78rem;color:var(--text-muted)}
+.wv-items{display:flex;flex-direction:column;gap:12px}
+.wv-item{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:500;color:var(--text)}
+.wv-item::before{content:'✓';width:22px;height:22px;border-radius:50%;background:rgba(10,102,194,.1);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+.workshop-overview{padding:100px 0;background:var(--off-white)}
+.workshop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.ws-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;box-shadow:var(--shadow);transition:box-shadow .25s,transform .2s}
+.ws-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
+.ws-icon{font-size:2.2rem;margin-bottom:20px;display:block}
+.ws-title{font-family:var(--font-head);font-size:1.05rem;font-weight:800;margin-bottom:10px}
+.ws-desc{font-size:.88rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px}
+.ws-tag{display:inline-block;font-size:.7rem;font-weight:600;color:var(--blue);background:rgba(10,102,194,.07);border:1px solid rgba(10,102,194,.15);padding:3px 10px;border-radius:100px}
+.workshop-curriculum{padding:100px 0;background:var(--white)}
+.curriculum-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.module-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:box-shadow .25s,transform .2s}
+.module-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
+.module-num{font-family:var(--font-head);font-size:2.5rem;font-weight:800;color:rgba(10,102,194,.12);line-height:1;margin-bottom:8px}
+.module-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:12px}
+.module-topics{display:flex;flex-direction:column;gap:8px}
+.module-topic{font-size:.85rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:8px}
+.module-topic::before{content:'→';color:var(--blue);font-weight:700;flex-shrink:0}
+.workshop-formats{padding:100px 0;background:var(--off-white)}
+.formats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.format-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:36px 28px;box-shadow:var(--shadow);transition:box-shadow .25s,transform .2s}
+.format-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
+.format-icon{font-size:2.2rem;margin-bottom:20px}
+.format-title{font-family:var(--font-head);font-size:1.05rem;font-weight:800;margin-bottom:10px}
+.format-desc{font-size:.88rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px}
+.format-detail{font-size:.8rem;color:var(--blue);font-weight:600}
+.workshop-outcomes{padding:100px 0;background:linear-gradient(135deg,#0a1628 0%,#0d1f3c 50%,var(--blue) 160%);color:#fff}
+.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.outcome-item{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px}
+.outcome-icon{font-size:1.8rem;flex-shrink:0}
+.outcome-item h4{font-family:var(--font-head);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px}
+.outcome-item p{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.6}
+.workshop-testimonials{padding:100px 0;background:var(--white)}
+.ws-testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
+.ws-testimonial{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative}
+.ws-testimonial::before{content:'"';font-family:var(--font-head);font-size:5rem;color:rgba(10,102,194,.08);position:absolute;top:-12px;left:20px;line-height:1;font-weight:800}
+.ws-testimonial p{font-size:.9rem;color:var(--text);line-height:1.75;margin-bottom:20px;position:relative;z-index:1;font-style:italic}
+.ws-testimonial-author{display:flex;align-items:center;gap:12px}
+.ws-author-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,rgba(10,102,194,.12),#c2dff7);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);flex-shrink:0}
+.ws-author-name{font-size:.875rem;font-weight:600}
+.ws-author-role{font-size:.75rem;color:var(--text-muted)}
+.ws-stars{color:#f59e0b;font-size:.8rem;margin-bottom:8px}
+@media(max-width:900px){.workshop-hero-inner{grid-template-columns:1fr}.workshop-grid,.outcomes-grid,.formats-grid{grid-template-columns:1fr 1fr}.curriculum-grid,.ws-testimonials-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.workshop-grid,.outcomes-grid,.formats-grid{grid-template-columns:1fr}}
+
+
+
+/* ══════════════════════════════════════════
+   ENHANCEMENT LAYER — Poppins + Montserrat
+   + 3D · Animations · Interactivity
+   Fonts & visuals only — zero content change
+══════════════════════════════════════════ */
+
+/* Font override */
+:root {
+  --font-head: 'Montserrat', sans-serif !important;
+  --font-body: 'Poppins', sans-serif !important;
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+}
+body { font-family: 'Poppins', sans-serif !important; }
+h1,h2,h3,h4,h5,h6,
+.section-headline,.hero-headline,.detail-title,.svc-title,
+.eng-title,.process-title,.approach-card h3,.mv-card h3,
+.team-card h4,.stat-val,.strip-val,.why-num,.approach-num {
+  font-family: 'Montserrat', sans-serif !important;
+  letter-spacing: -0.025em !important;
+}
+.section-tag,.hero-badge,.section-label-pill,.eng-badge,
+.case-tag,.svc-tag,.tool-pill,.nav-links a,.footer-col h4 {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* ── FIX: reveal elements — start VISIBLE, animate on scroll ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+              transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+/* fallback — if JS fails, everything shows */
+.no-js .reveal { opacity: 1 !important; transform: none !important; }
+
+/* ── SCROLL PROGRESS BAR ── */
+#fm-progress {
+  position: fixed; top: 0; left: 0; height: 3px;
+  width: 0%; z-index: 99999; pointer-events: none;
+  background: linear-gradient(90deg, #0A66C2, #38bdf8, #0A66C2);
+  background-size: 200% 100%;
+  animation: progressShimmer 2s linear infinite;
+  transition: width 0.12s linear;
+}
+@keyframes progressShimmer {
+  0%{background-position:200% center}100%{background-position:-200% center}
+}
+
+/* ── CUSTOM CURSOR ── */
+#fm-cursor {
+  position: fixed; width: 10px; height: 10px;
+  background: #0A66C2; border-radius: 50%;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: width 0.2s var(--ease-spring), height 0.2s var(--ease-spring), opacity 0.2s;
+  mix-blend-mode: multiply;
+}
+#fm-cursor-ring {
+  position: fixed; width: 38px; height: 38px;
+  border: 1.5px solid rgba(10,102,194,0.45);
+  border-radius: 50%; pointer-events: none; z-index: 99997;
+  transform: translate(-50%,-50%);
+  transition: width 0.3s var(--ease-spring), height 0.3s var(--ease-spring);
+}
+.fm-hovering #fm-cursor { width: 18px; height: 18px; background: rgba(10,102,194,0.55); }
+.fm-hovering #fm-cursor-ring { width: 56px; height: 56px; border-color: rgba(10,102,194,0.2); }
+@media(hover:none){#fm-cursor,#fm-cursor-ring{display:none}}
+
+/* ── ANIMATED GRADIENT BACKGROUND GRID ── */
+body::before {
+  animation: gridShift 24s linear infinite;
+}
+@keyframes gridShift {
+  from { background-position: 0 0; }
+  to   { background-position: 48px 48px; }
+}
+
+/* ── HERO ACCENT — GRADIENT SHIMMER TEXT ── */
+.hero-headline .accent, .hero-about h1 .highlight {
+  background: linear-gradient(130deg, #0A66C2 0%, #38bdf8 45%, #0A66C2 90%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3.5s ease-in-out infinite;
+  position: relative;
+}
+.hero-headline .accent::after { display: none !important; }
+@keyframes shimmer {
+  0%,100%{background-position:0% center}
+  50%{background-position:100% center}
+}
+
+/* ── HERO BADGE PULSE ── */
+.hero-badge::before {
+  animation: badgePulse 2s ease-in-out infinite !important;
+}
+@keyframes badgePulse {
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(10,102,194,0.7)}
+  60%{transform:scale(1.15);box-shadow:0 0 0 8px rgba(10,102,194,0)}
+}
+
+/* ── FLOATING HERO STAT CARDS ── */
+.stat-card { cursor: default; }
+.stat-card:nth-child(1){animation:floatIn .6s cubic-bezier(.22,1,.36,1) .05s both,floatY 4s ease-in-out 0.7s infinite!important}
+.stat-card:nth-child(2){animation:floatIn .6s cubic-bezier(.22,1,.36,1) .15s both,floatY 4s ease-in-out 1.3s infinite!important}
+.stat-card:nth-child(3){animation:floatIn .6s cubic-bezier(.22,1,.36,1) .25s both,floatY 4s ease-in-out 1.9s infinite!important}
+.stat-card:nth-child(4){animation:floatIn .6s cubic-bezier(.22,1,.36,1) .35s both,floatY 4s ease-in-out 2.5s infinite!important}
+@keyframes floatY {
+  0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}
+}
+
+/* ── GLOW ORBS ANIMATED ── */
+.glow-orb-1{animation:orb1 7s ease-in-out infinite!important}
+.glow-orb-2{animation:orb2 9s ease-in-out infinite!important}
+@keyframes orb1{0%,100%{transform:translate(0,0)scale(1)}33%{transform:translate(18px,-14px)scale(1.05)}66%{transform:translate(-10px,8px)scale(0.97)}}
+@keyframes orb2{0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(-16px,18px)scale(1.08)}}
+
+/* ── NAV CTA PULSE ── */
+.nav-links .nav-cta {
+  animation: navPulse 3s ease-in-out infinite;
+}
+@keyframes navPulse {
+  0%,100%{box-shadow:0 0 0 0 rgba(10,102,194,0.4)}
+  50%{box-shadow:0 0 0 7px rgba(10,102,194,0)}
+}
+
+/* ── NAV LINK UNDERLINE SLIDE ── */
+.nav-links a:not(.nav-cta) {
+  position: relative;
+}
+.nav-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 2px;
+  background: #0A66C2;
+  border-radius: 2px;
+  transition: width 0.25s var(--ease-out);
+}
+.nav-links a:not(.nav-cta):hover::after,
+.nav-links a.active::after { width: 100%; }
+
+/* ── SERVICE / CASE / TEAM CARDS — 3D TILT ── */
+.service-card, .svc-card, .case-card, .team-card,
+.testimonial-card, .process-step, .eng-card:not(.featured),
+.trust-card, .mv-card, .approach-card, .ab-testimonial {
+  transition: transform 0.35s var(--ease-out),
+              box-shadow 0.35s, border-color 0.25s !important;
+  will-change: transform;
+}
+
+/* ── SERVICE ICON BOUNCE ── */
+.service-icon, .svc-icon {
+  display: inline-block;
+  transition: transform 0.4s var(--ease-spring) !important;
+}
+.service-card:hover .service-icon,
+.svc-card:hover .svc-icon {
+  transform: scale(1.25) rotate(-8deg) !important;
+}
+
+/* ── WHY VISUAL 3D ── */
+.why-visual {
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s !important;
+  transform-style: preserve-3d;
+}
+
+/* ── DETAIL VISUAL CARD 3D ── */
+.detail-visual-card, .story-card-visual {
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s !important;
+}
+
+/* ── STATS STRIP SHIMMER ── */
+.stats-strip {
+  position: relative; overflow: hidden;
+}
+.stats-strip::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(10,102,194,0.06) 50%, transparent 60%);
+  animation: stripSweep 3.5s ease-in-out infinite;
+}
+@keyframes stripSweep {
+  0%{transform:translateX(-100%)}
+  50%{transform:translateX(100%)}
+  100%{transform:translateX(100%)}
+}
+
+/* ── FEATURED ENGAGEMENT CARD SHINE ── */
+.eng-card.featured {
+  position: relative; overflow: hidden;
+}
+.eng-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+  animation: cardShine 4s ease-in-out infinite;
+}
+@keyframes cardShine {
+  0%{left:-100%}25%,100%{left:150%}
+}
+
+/* ── FINAL CTA ANIMATED ORB ── */
+.final-cta, .about-final-cta {
+  overflow: hidden;
+}
+.final-cta::after, .about-final-cta::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -150px; right: -100px;
+  animation: ctaOrb 7s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes ctaOrb {
+  0%,100%{transform:translate(0,0)scale(1)}
+  50%{transform:translate(-25px,-20px)scale(1.12)}
+}
+
+/* ── WA FLOAT BOUNCE ── */
+.wa-float {
+  animation: waBounce 2.5s ease-in-out infinite !important;
+}
+.wa-float:hover {
+  animation: none !important;
+  transform: scale(1.15) !important;
+}
+@keyframes waBounce {
+  0%,100%{transform:translateY(0)scale(1)}
+  50%{transform:translateY(-7px)scale(1.05)}
+}
+
+/* ── FOOTER LINK HOVER ── */
+.footer-col a {
+  transition: color 0.2s, padding-left 0.2s !important;
+}
+.footer-col a:hover {
+  padding-left: 6px !important;
+  color: rgba(10,102,194,0.85) !important;
+}
+
+/* ── APPROACH SECTION ── */
+.approach::before {
+  animation: dotDrift 20s linear infinite;
+}
+@keyframes dotDrift {
+  from{background-position:0 0}to{background-position:32px 32px}
+}
+
+/* ── BUTTON HOVER LIFT ── */
+.btn-primary, .btn-white, .btn-secondary, .btn-wa, .btn-ghost-white {
+  transition: background var(--transition), box-shadow var(--transition),
+              transform 0.2s var(--ease-spring) !important;
+}
+
+/* ── REVEAL DELAY CLASSES ── */
+.reveal-d1{transition-delay:0.1s!important}
+.reveal-d2{transition-delay:0.2s!important}
+.reveal-d3{transition-delay:0.3s!important}
+.reveal-d4{transition-delay:0.4s!important}
+
+/* ── PAGE TRANSITION ── */
+#fm-page-veil {
+  position: fixed; inset: 0;
+  background: #0A66C2;
+  z-index: 999999;
+  transform: scaleY(0);
+  transform-origin: top;
+  pointer-events: none;
+}
+
+/* ── CONTACT FORM INPUT FOCUS ── */
+input:focus, textarea:focus, select:focus {
+  transform: translateY(-1px);
+  transition: transform 0.2s var(--ease-spring) !important;
+}
+
+</style>
+</head>
+<body>
+<!-- ═══ HEADER ═══ -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-inner">
+    <a href="index.html" class="site-logo">
+      <img src="https://www.futureadymedia.com/wp-content/uploads/2019/08/futuready_logo.png"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+           alt="Futuready Media Logo">
+      <span class="logo-text" style="display:none;">Future<span>ready</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" >Home</a>
+      <a href="about-us.html" >About</a>
+      <a href="services.html" >Services</a>
+      <a href="ai-workshop.html" class='active'>AI Workshop</a>
+      <a href="contact.html" >Contact</a>
+      <a href="tel:+91XXXXXXXXXX" class="nav-cta">📞 Book a Call</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about-us.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="ai-workshop.html">AI Workshop</a>
+  <a href="contact.html">Contact</a>
+  <a href="tel:+91XXXXXXXXXX" style="color:var(--blue);font-weight:600;">📞 Book a Call</a>
+</nav>
+
+<section class="workshop-hero">
+  <div class="workshop-hero-inner">
+    <div>
+      <div class="workshop-badge">AI Workshop</div>
+      <h1>Transform Your Business with<br><span class="accent">AI-Powered</span> Marketing.</h1>
+      <p>Hands-on workshops designed for founders, marketers, and business teams who want to use AI practically — not theoretically. Walk away with tools, workflows, and a custom AI action plan for your business.</p>
+      <div class="cta-group">
+        <a href="contact.html" class="btn-primary">📅 Reserve Your Spot</a>
+        <a href="https://wa.me/919999999999" target="_blank" class="btn-secondary">💬 Ask Us Anything</a>
+      </div>
+    </div>
+    <div>
+      <div class="workshop-visual-card reveal">
+        <div class="wv-header"><div class="wv-icon">🤖</div><div><div class="wv-title">What You'll Walk Away With</div><div class="wv-sub">After a single workshop day</div></div></div>
+        <div class="wv-items">
+          <div class="wv-item">Custom AI workflow for your team</div>
+          <div class="wv-item">Live prompt library you can use immediately</div>
+          <div class="wv-item">AI tool stack tailored to your business</div>
+          <div class="wv-item">90-day AI implementation roadmap</div>
+          <div class="wv-item">Access to post-workshop support channel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="workshop-overview">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag" style="justify-content:center">Workshop Types</div>
+      <h2 class="section-headline" style="margin-inline:auto">Choose the Workshop<br>That Fits Your Team</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">From half-day intensives to multi-day transformation programs — each workshop is custom-tailored to your industry and team size.</p>
+    </div>
+    <div class="workshop-grid">
+      <div class="ws-card reveal"><span class="ws-icon">⚡</span><div class="ws-title">AI Fundamentals (Half Day)</div><p class="ws-desc">Perfect introduction for teams new to AI. Covers key tools, prompting basics, and 3 immediate use cases for your business.</p><span class="ws-tag">3–4 hours · Up to 20 people</span></div>
+      <div class="ws-card reveal reveal-d1"><span class="ws-icon">🚀</span><div class="ws-title">AI for Marketing (Full Day)</div><p class="ws-desc">Deep-dive into AI for content creation, ad copy, social media, email marketing, and competitor research. Hands-on throughout.</p><span class="ws-tag">6–7 hours · Up to 15 people</span></div>
+      <div class="ws-card reveal reveal-d2"><span class="ws-icon">🏢</span><div class="ws-title">AI Business Transformation (2 Days)</div><p class="ws-desc">End-to-end AI integration workshop for leadership teams. Covers strategy, workflows, tool adoption, and team rollout planning.</p><span class="ws-tag">2 full days · Leadership teams</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="workshop-curriculum">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag" style="justify-content:center">Curriculum</div>
+      <h2 class="section-headline" style="margin-inline:auto">What We Cover</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">Every module is practical, interactive, and directly applicable to your daily marketing and business operations.</p>
+    </div>
+    <div class="curriculum-grid">
+      <div class="module-card reveal"><div class="module-num">01</div><div class="module-title">AI Foundations &amp; Mindset</div><div class="module-topics"><div class="module-topic">What AI can and can't do for your business</div><div class="module-topic">ChatGPT, Claude, Gemini — which tool for what</div><div class="module-topic">Prompt engineering principles that actually work</div><div class="module-topic">Building an AI-first workflow culture</div></div></div>
+      <div class="module-card reveal reveal-d1"><div class="module-num">02</div><div class="module-title">AI for Content &amp; Copywriting</div><div class="module-topics"><div class="module-topic">Writing ads, emails, and social posts with AI</div><div class="module-topic">Brand voice prompting — making AI sound like you</div><div class="module-topic">Bulk content production workflows</div><div class="module-topic">AI image tools: Midjourney, DALL-E, Canva AI</div></div></div>
+      <div class="module-card reveal reveal-d2"><div class="module-num">03</div><div class="module-title">AI for Research &amp; Strategy</div><div class="module-topics"><div class="module-topic">Competitor analysis using AI in under 30 minutes</div><div class="module-topic">Keyword and content gap research with AI</div><div class="module-topic">Customer persona creation &amp; audience insights</div><div class="module-topic">AI-assisted market sizing and opportunity mapping</div></div></div>
+      <div class="module-card reveal reveal-d3"><div class="module-num">04</div><div class="module-title">AI Automation &amp; Workflows</div><div class="module-topics"><div class="module-topic">Building your first no-code AI automation</div><div class="module-topic">Zapier + AI for marketing ops</div><div class="module-topic">CRM enrichment and lead scoring with AI</div><div class="module-topic">Custom GPT assistants for your team</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="workshop-formats">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag" style="justify-content:center">Delivery Options</div>
+      <h2 class="section-headline" style="margin-inline:auto">How We Deliver</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">Whether your team is in Mumbai, spread across India, or fully remote — we've got a format that works.</p>
+    </div>
+    <div class="formats-grid">
+      <div class="format-card reveal"><div class="format-icon">🏢</div><div class="format-title">In-Person Workshop</div><p class="format-desc">We come to your office or preferred venue. Full setup, printed workbooks, and live hands-on exercises. Best for team bonding and deep engagement.</p><div class="format-detail">📍 Mumbai, Pune, Bangalore &amp; pan-India</div></div>
+      <div class="format-card reveal reveal-d1"><div class="format-icon">💻</div><div class="format-title">Virtual Workshop</div><p class="format-desc">Live, interactive sessions over Zoom or Google Meet. Same exercises, same outcomes — no location barrier. Recorded for future reference.</p><div class="format-detail">🌐 Available for any team, anywhere</div></div>
+      <div class="format-card reveal reveal-d2"><div class="format-icon">🔁</div><div class="format-title">Ongoing Cohort Program</div><p class="format-desc">6-week rolling program with weekly sessions, assignments, and a private community. Ideal for teams building AI habits gradually and sustainably.</p><div class="format-detail">📅 New cohorts start monthly</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="workshop-outcomes">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag" style="justify-content:center;color:rgba(255,255,255,.6)">Why It Works</div>
+      <h2 class="section-headline" style="color:#fff;margin-inline:auto">Outcomes Our Attendees Report</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center;color:rgba(255,255,255,.65)">Real measurable changes reported by teams within 30 days of completing our workshops.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-item reveal"><div class="outcome-icon">⏱️</div><div><h4>50% Reduction in Content Time</h4><p>Teams consistently report cutting their content production time in half using the AI workflows taught in the workshop.</p></div></div>
+      <div class="outcome-item reveal reveal-d1"><div class="outcome-icon">📊</div><div><h4>3× More Content Output</h4><p>With AI-assisted workflows, teams produce 3x the content volume without adding headcount or compromising quality.</p></div></div>
+      <div class="outcome-item reveal reveal-d2"><div class="outcome-icon">💡</div><div><h4>Immediate AI Adoption</h4><p>95% of attendees report using at least one AI tool daily within the first week after the workshop.</p></div></div>
+      <div class="outcome-item reveal reveal-d1"><div class="outcome-icon">💰</div><div><h4>Lower Agency Dependence</h4><p>Teams become self-sufficient for routine content tasks, reducing reliance on external agencies and saving significant costs.</p></div></div>
+      <div class="outcome-item reveal reveal-d2"><div class="outcome-icon">🎯</div><div><h4>Better Campaign Results</h4><p>AI-optimised copy and research leads to measurably better ad performance and organic content engagement.</p></div></div>
+      <div class="outcome-item reveal reveal-d3"><div class="outcome-icon">🤝</div><div><h4>Team Alignment on AI</h4><p>Everyone from the founder to the intern speaks the same AI language — reducing friction and accelerating adoption across the org.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="workshop-testimonials">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag" style="justify-content:center">Attendee Feedback</div>
+      <h2 class="section-headline" style="margin-inline:auto">What Attendees Say</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">From founders to marketers — hear from people who've already transformed their teams with our workshops.</p>
+    </div>
+    <div class="ws-testimonials-grid">
+      <div class="ws-testimonial reveal"><div class="ws-stars">★★★★★</div><p>"The AI workshop alone was worth 10x what we paid. We came in sceptical and left with a completely new way of running our content and outreach operations. Within 30 days, our team was producing content faster than ever."</p><div class="ws-testimonial-author"><div class="ws-author-av">S</div><div><div class="ws-author-name">Sneha Iyer</div><div class="ws-author-role">Co-founder, EdTech Startup, Pune</div></div></div></div>
+      <div class="ws-testimonial reveal reveal-d1"><div class="ws-stars">★★★★★</div><p>"We've done AI training before and it was always theoretical. This was completely different — we had our actual use cases on the table and built real workflows during the session. Incredible value."</p><div class="ws-testimonial-author"><div class="ws-author-av">K</div><div><div class="ws-author-name">Karan Shah</div><div class="ws-author-role">Head of Marketing, SaaS Company, Mumbai</div></div></div></div>
+      <div class="ws-testimonial reveal reveal-d2"><div class="ws-stars">★★★★★</div><p>"Our leadership team walked away with a shared AI strategy for the first time. The Futuready workshop helped us get aligned on where AI fits in our business and how to roll it out responsibly."</p><div class="ws-testimonial-author"><div class="ws-author-av">P</div><div><div class="ws-author-name">Priya Nair</div><div class="ws-author-role">CEO, D2C Brand, Bangalore</div></div></div></div>
+      <div class="ws-testimonial reveal reveal-d3"><div class="ws-stars">★★★★★</div><p>"Practical, fast-paced, and tailored to our industry. No generic AI tips — every module was designed around our specific challenges. I'd recommend this to any founder who wants to compete in the AI era."</p><div class="ws-testimonial-author"><div class="ws-author-av">R</div><div><div class="ws-author-name">Rahul Mehta</div><div class="ws-author-role">Founder, Healthcare Startup, Delhi</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container final-cta-inner reveal">
+    <div class="section-tag">Reserve Your Spot</div>
+    <h2 class="section-headline">Ready to Give Your Team an<br>AI-Powered Edge?</h2>
+    <p class="section-sub">Spots are limited to ensure every participant gets hands-on attention. Book a discovery call and we'll custom-design the right workshop for your team.</p>
+    <div class="final-cta-btns">
+      <a href="contact.html" class="btn-white">📅 Book a Discovery Call</a>
+      <a href="https://wa.me/919999999999" target="_blank" class="btn-ghost-white">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="guarantee-note">✓ Custom-designed for your team &nbsp;·&nbsp; ✓ In-person &amp; virtual options &nbsp;·&nbsp; ✓ Post-workshop support included</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="https://www.futureadymedia.com/wp-content/uploads/2019/08/futuready_logo.png"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" alt="Futuready Media">
+          <span class="logo-text" style="display:none;">Future<span>ready</span></span>
+        </a>
+        <p>AI-driven digital marketing solutions for ambitious brands. Strategy. Execution. Growth.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a><a href="about-us.html">About Us</a>
+        <a href="services.html">Services</a><a href="ai-workshop.html">AI Workshop</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services.html">Performance Marketing</a><a href="services.html">SEO &amp; Content</a>
+        <a href="services.html">Web Development</a><a href="services.html">AI Automation</a>
+        <a href="services.html">Social Media</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+919999999999">+91 99999 99999</a>
+        <a href="/cdn-cgi/l/email-protection#afc7cac3c3c0efc9dadbdaddcacecbd6c2cacbc6ce81ccc0c2"><span class="__cf_email__" data-cfemail="741c1118181b3412010001061115100d1911101d155a171b19">[email&#160;protected]</span></a>
+        <a href="https://wa.me/919999999999" target="_blank">WhatsApp Us</a>
+        <a href="https://www.futureadymedia.com" target="_blank">futureadymedia.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Futuready Media. All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/919999999999" class="wa-float" title="Chat on WhatsApp">💬</a>
+
+<script>
+(function(){
+'use strict';
+
+// ── SCROLL PROGRESS ──
+var pb = document.createElement('div');
+pb.id = 'fm-progress';
+document.body.appendChild(pb);
+window.addEventListener('scroll', function(){
+  var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  pb.style.width = Math.min(pct, 100) + '%';
+}, {passive:true});
+
+// ── REVEAL OBSERVER ──
+var revealEls = document.querySelectorAll('.reveal');
+if(window.IntersectionObserver){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
+  revealEls.forEach(function(el){ obs.observe(el); });
+} else {
+  // fallback for no IO support
+  revealEls.forEach(function(el){ el.classList.add('in-view'); });
+}
+
+// ── CUSTOM CURSOR (desktop only) ──
+var isTouch = window.matchMedia('(hover:none)').matches;
+if(!isTouch){
+  var cur = document.createElement('div');
+  cur.id = 'fm-cursor';
+  var ring = document.createElement('div');
+  ring.id = 'fm-cursor-ring';
+  document.body.appendChild(cur);
+  document.body.appendChild(ring);
+  var cx=0,cy=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){
+    cx=e.clientX; cy=e.clientY;
+    cur.style.left=cx+'px'; cur.style.top=cy+'px';
+  });
+  (function follow(){
+    rx+=(cx-rx)*0.13; ry+=(cy-ry)*0.13;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(follow);
+  })();
+  var hoverEls = document.querySelectorAll('a,button,.service-card,.case-card,.team-card,.eng-card,.mv-card,.process-step,.trust-card');
+  hoverEls.forEach(function(el){
+    el.addEventListener('mouseenter',function(){ document.body.classList.add('fm-hovering'); });
+    el.addEventListener('mouseleave',function(){ document.body.classList.remove('fm-hovering'); });
+  });
+}
+
+// ── 3D TILT ON CARDS ──
+var tiltCards = document.querySelectorAll(
+  '.service-card,.svc-card,.case-card,.team-card,.testimonial-card,.process-step,.eng-card,.trust-card,.mv-card,.approach-card,.ab-testimonial,.stat-card'
+);
+tiltCards.forEach(function(card){
+  var intensity = card.classList.contains('stat-card') ? 10 : 6;
+  card.addEventListener('mousemove',function(e){
+    var r = card.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width  - 0.5;
+    var y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = 'perspective(900px) rotateX('+(- y*intensity)+'deg) rotateY('+(x*intensity)+'deg) translateY(-6px) scale(1.01)';
+    card.style.boxShadow = '0 20px 60px rgba(10,102,194,0.16),0 4px 12px rgba(0,0,0,0.05)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
+
+// ── WHY-VISUAL & DETAIL CARDS 3D ──
+var deepCards = document.querySelectorAll('.why-visual,.detail-visual-card,.story-card-visual');
+deepCards.forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var r = card.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width  - 0.5;
+    var y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = 'perspective(900px) rotateX('+(- y*4)+'deg) rotateY('+(x*4)+'deg)';
+    card.style.boxShadow = '12px 20px 48px rgba(10,102,194,0.14)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
+
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.btn-primary,.btn-white,.btn-secondary,.btn-wa').forEach(function(btn){
+  btn.addEventListener('mousemove',function(e){
+    var r = btn.getBoundingClientRect();
+    var x = e.clientX - r.left - r.width/2;
+    var y = e.clientY - r.top  - r.height/2;
+    btn.style.transform = 'translate('+(x*0.18)+'px,'+(y*0.28)+'px)';
+  });
+  btn.addEventListener('mouseleave',function(){ btn.style.transform = ''; });
+});
+
+// ── ANIMATED NUMBER COUNTERS ──
+function easeOutCubic(t){ return 1 - Math.pow(1-t, 3); }
+function animCount(el){
+  var text = el.textContent.trim();
+  var m = text.match(/^([\d.]+)(.*)/);
+  if(!m) return;
+  var target = parseFloat(m[1]);
+  var suffix = m[2]||'';
+  var isFloat = m[1].indexOf('.')!==-1;
+  var dec = isFloat ? m[1].split('.')[1].length : 0;
+  var dur = 1800, start = null;
+  function step(ts){
+    if(!start) start=ts;
+    var p = Math.min((ts-start)/dur, 1);
+    var val = target * easeOutCubic(p);
+    el.textContent = (isFloat ? val.toFixed(dec) : Math.round(val)) + suffix;
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+if(window.IntersectionObserver){
+  var cntObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !e.target._counted){
+        e.target._counted = true;
+        animCount(e.target);
+        cntObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.6});
+  document.querySelectorAll('.strip-val,.ph-stat-val,.stat-num').forEach(function(el){
+    cntObs.observe(el);
+  });
+}
+
+// ── PARALLAX GLOW ORBS ON MOUSEMOVE ──
+var orbs = document.querySelectorAll('.glow-orb');
+if(orbs.length){
+  document.addEventListener('mousemove',function(e){
+    var mx = (e.clientX/window.innerWidth  - 0.5)*28;
+    var my = (e.clientY/window.innerHeight - 0.5)*28;
+    orbs.forEach(function(o,i){
+      var f = i%2===0 ? 1 : -0.7;
+      o.style.transform = 'translate('+(mx*f)+'px,'+(my*f)+'px)';
+    });
+  },{passive:true});
+}
+
+// ── PAGE TRANSITION ──
+var veil = document.createElement('div');
+veil.id = 'fm-page-veil';
+document.body.appendChild(veil);
+// Reveal on page load
+setTimeout(function(){
+  veil.style.transition = 'transform 0.4s cubic-bezier(0.76,0,0.24,1)';
+  veil.style.transformOrigin = 'top';
+  veil.style.transform = 'scaleY(0)';
+}, 10);
+// Animate out on internal link click
+document.querySelectorAll('a[href]').forEach(function(a){
+  var href = a.getAttribute('href');
+  if(!href || href[0]==='#' || href.startsWith('http') || href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('//')) return;
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    veil.style.transformOrigin = 'bottom';
+    veil.style.transition = 'transform 0.35s cubic-bezier(0.76,0,0.24,1)';
+    veil.style.transform = 'scaleY(1)';
+    setTimeout(function(){ window.location.href = href; }, 360);
+  });
+});
+
+// ── HEADER SCROLL ──
+var hdr = document.getElementById('siteHeader');
+if(hdr){
+  window.addEventListener('scroll',function(){
+    hdr.classList.toggle('scrolled', window.scrollY>20);
+  },{passive:true});
+}
+
+// ── HAMBURGER ──
+var hbg = document.getElementById('hamburger');
+var mm  = document.getElementById('mobileMenu');
+if(hbg && mm){
+  hbg.addEventListener('click',function(){
+    mm.classList.toggle('open');
+    var s=hbg.querySelectorAll('span'), o=mm.classList.contains('open');
+    s[0].style.transform = o?'rotate(45deg) translate(5px,5px)':'';
+    s[1].style.opacity   = o?'0':'1';
+    s[2].style.transform = o?'rotate(-45deg) translate(5px,-5px)':'';
+  });
+  mm.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      mm.classList.remove('open');
+      hbg.querySelectorAll('span').forEach(function(s){ s.style.transform=''; s.style.opacity=''; });
+    });
+  });
+}
+
+})();
+</script>
+
+</body>
+</html>
